@@ -13,35 +13,82 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <!--        <flink.version>1.13.0</flink.version>-->
-        <flink.version>1.17.0</flink.version>
+        <flink.version>1.13.0</flink.version>
         <java.version>1.8</java.version>
         <scala.binary.version>2.12</scala.binary.version>
         <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>com.ververica</groupId>
+            <artifactId>flink-connector-mysql-cdc</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-api-java-bridge_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.45</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
         <!-- 引入 Flink 相关依赖-->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-java</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
+<!--            <scope>provided</scope>-->
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
+<!--            <artifactId>flink-streaming-java</artifactId>-->
+            <version>${flink.version}</version>
+<!--            <scope>provided</scope>-->
         </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
-<!--            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>-->
-            <artifactId>flink-streaming-java</artifactId>
+            <artifactId>flink-clients_${scala.binary.version}</artifactId>
+<!--            <artifactId>flink-clients</artifactId>-->
             <version>${flink.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-<!--            <artifactId>flink-clients_${scala.binary.version}</artifactId>-->
-            <artifactId>flink-clients</artifactId>
-            <version>${flink.version}</version>
-            <scope>provided</scope>
+<!--            <scope>provided</scope>-->
         </dependency>
         <!-- 引入日志管理相关依赖-->
         <dependency>
@@ -69,6 +116,11 @@
             <groupId>org.objenesis</groupId>
             <artifactId>objenesis</artifactId>
             <version>3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
         </dependency>
     </dependencies>
 
