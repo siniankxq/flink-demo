@@ -71,7 +71,8 @@ public class DimApp {
 				3, Time.days(1L), Time.minutes(1L)));
 
 		streamExecutionEnvironment.getCheckpointConfig().setCheckpointStorage(
-				"hdfs://hadoop102:8020/flinkCDC"
+//				"hdfs://hadoop102:8020/flinkCDC"
+				"file:///Users/flink/checkpoints/TestCheckPoint"
 		);
 //		Properties properties = new Properties();
 //
